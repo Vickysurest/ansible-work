@@ -8,71 +8,35 @@
     yum:
       name: httpd
       state: present
-    when: ansible_distribution == "Amazon"
+    when: ansible_distribution == "Amazon" or ansible_distribution == "Centos"
 
   - name: start HTTPD
     service:
       name: httpd
       state: started
-    when: ansible_distribution == "Amazon"
+    when: ansible_distribution == "Amazon" or ansible_distribution == "Centos"
 
   - name: enable HTTPD
     service:
       name: httpd
       enabled: yes   
-    when: ansible_distribution == "Amazon"
+    when: ansible_distribution == "Amazon" or ansible_distribution == "Centos"
 
   - name: Install Apache2
     apt:
       name: apache2
       state: present
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
   - name: start apache2
     service:
       name: apache2
       state: started
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
   - name: enable apache2
     service:
       name: apache2
       enabled: yes    
-    when: ansible_distribution == "Ubuntu"
-
-  - name: Install HTTPD on CentOS
-    yum:
-      name: httpd
-      state: present
-    when: ansible_distribution == "CentOS"
-
-  - name: start HTTPD
-    service:
-      name: httpd
-      state: started
-    when: ansible_distribution == "CentOS"
-
-  - name: enable HTTPD
-    service:
-      name: httpd
-      enabled: yes   
-    when: ansible_distribution == "CentOS"
-
-  - name: Install Apache2 on Debian
-    apt:
-      name: apache2
-      state: present
-    when: ansible_distribution == "Debian"
-
-  - name: start apache2
-    service:
-      name: apache2
-      state: started
-    when: ansible_distribution == "Debian"
-
-  - name: enable apache2
-    service:
-      name: apache2
-      enabled: yes    
-    when: ansible_distribution == "Debian"
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 ...
